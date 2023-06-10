@@ -28,6 +28,23 @@ global $thumbnail_image;
 $columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
 $post_thumbnail_id = $product->get_image_id();
 $attachment_ids    = $product->get_gallery_image_ids();
+/// new code 10.06.23
+// Check if video exists
+$video = get_post_meta( get_the_ID(), 'video', true );
+
+if ( $video ) {
+    // Insert placeholder image into attachment ids
+    array_unshift( $attachment_ids, 'id_of_your_placeholder_image' );
+}
+
+if ( $attachment_ids && $product->get_image_id() ) {
+    foreach ( $attachment_ids as $attachment_id ) {
+        echo wc_get_gallery_image_html( $attachment_id, true );
+    }
+}
+// end of new code 10.06.23
+
+
 $wrapper_classes   = apply_filters(
 	'woocommerce_single_product_image_gallery_classes',
 	array(
