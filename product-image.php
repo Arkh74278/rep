@@ -34,7 +34,7 @@ $video = get_post_meta( get_the_ID(), 'video', true );
 
 if ( $video ) {
     // Insert placeholder image into attachment ids
-    array_unshift( $attachment_ids, 'id_of_your_placeholder_image' );
+    array_unshift( $attachment_ids, '8885' );
 }
 
 if ( $attachment_ids && $product->get_image_id() ) {
