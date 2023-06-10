@@ -58,6 +58,25 @@ if ( ! empty( $video_url ) ) {
     <?php
 }
 
+
+if ( $video_link ) {
+    echo '<div data-thumb="' . esc_url( $video_thumbnail ) . '" class="woocommerce-product-gallery__image video-thumbnail">';
+    echo '<a href="' . esc_url( $video_link ) . '">';
+    echo '<img src="' . esc_url( $video_thumbnail ) . '" alt="Video thumbnail" />';
+    echo '</a>';
+    echo '</div>';
+
+    // Add placeholder image for video
+    $placeholder_image = '/wp-content/uploads/video-play-button.svg'; // Replace with the actual URL of your placeholder image
+    echo '<div data-thumb="' . esc_url( $placeholder_image ) . '" class="woocommerce-product-gallery__image video-placeholder">';
+    echo '<a href="' . esc_url( $placeholder_image ) . '">';
+    echo '<img src="' . esc_url( $placeholder_image ) . '" alt="Video placeholder" />';
+    echo '</a>';
+    echo '</div>';
+}
+
+
+
 if ( $attachment_ids && $post_attachment_id ) {
     foreach ( $attachment_ids as $attachment_id ) {
         if ( 'masonry_sticky' == $layout ) {
@@ -66,6 +85,11 @@ if ( $attachment_ids && $post_attachment_id ) {
             echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', molla_wc_get_gallery_image_html( $attachment_id, false ), $attachment_id, $layout );
         }
     }
+	if (empty($attachment_ids)) {
+		echo '<div class="woocommerce-product-gallery__image">';
+		echo sprintf( '<img src="%s" />', esc_url( $placeholder_image ) );
+		echo '</div>';
+	}
 }
 
 // Add the Magnific Popup initialization code after the video thumbnail code (custom css added to style.css) - Ark
