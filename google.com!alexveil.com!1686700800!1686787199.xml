@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feedback>
+  <report_metadata>
+    <org_name>google.com</org_name>
+    <email>noreply-dmarc-support@google.com</email>
+    <extra_contact_info>https://support.google.com/a/answer/2466580</extra_contact_info>
+    <report_id>12873166976746213185</report_id>
+    <date_range>
+      <begin>1686700800</begin>
+      <end>1686787199</end>
+    </date_range>
+  </report_metadata>
+  <policy_published>
+    <domain>alexveil.com</domain>
+    <adkim>r</adkim>
+    <aspf>r</aspf>
+    <p>reject</p>
+    <sp>reject</sp>
+    <pct>100</pct>
+    <np>reject</np>
+  </policy_published>
+  <record>
+    <row>
+      <source_ip>72.249.68.237</source_ip>
+      <count>1</count>
+      <policy_evaluated>
+        <disposition>reject</disposition>
+        <dkim>fail</dkim>
+        <spf>fail</spf>
+      </policy_evaluated>
+    </row>
+    <identifiers>
+      <header_from>shop.alexveil.com</header_from>
+    </identifiers>
+    <auth_results>
+      <dkim>
+        <domain>shop.alexveil.com</domain>
+        <result>fail</result>
+        <selector>default</selector>
+      </dkim>
+      <spf>
+        <domain>cloud-ce4f32.managed-vps.net</domain>
+        <result>none</result>
+      </spf>
+    </auth_results>
+  </record>
+</feedback>
